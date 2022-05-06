@@ -4,7 +4,11 @@ export function App(){
 
     return(
 
-        <div>holamundo</div>
+        <div style={estilo}>holamundo</div>
     )
 }
 
+const estilo = {
+
+    color:"red"
+};
