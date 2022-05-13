@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 
 export function App(){
 
@@ -9,6 +10,11 @@ export function App(){
 }
 
 const estilo = {
-
-    color:"red"
+    
+    color:"red",
+    width:"90%",
+    height:"40.5%",
+    top:"30%",
+    display: "inline-block",
+    backgroundColor: "red",
 };
