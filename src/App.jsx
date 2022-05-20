@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react';
+import * as d3 from "d3";
 
 export function App(){
 
@@ -10,7 +11,7 @@ export function App(){
 }
 
 const estilo = {
-    
+    position:"relative",
     color:"red",
     width:"90%",
     height:"40.5%",
