@@ -1,12 +1,37 @@
 import React from "react";
-import { useState, useEffect } from 'react';
+import {useRef, useState, useEffect } from 'react';
 import * as d3 from "d3";
+import Canva from "./components/Canva";
+import draw from "./functions/draw.js"
+
+
 
 export function App(){
 
+    const elDiv = useRef();
+
+    const [alturaCanvas,setAlturaCanvas] = useState(0);
+    const [anchoCanvas,setAnchoCanvas] = useState(0);
+
+    useEffect(()=>{
+        
+        if(elDiv.current != null){
+
+        
+        setAlturaCanvas(elDiv.current.clientHeight);
+        setAnchoCanvas(elDiv.current.clientWidth);
+
+
+        }
+
+    },[elDiv]);
+
     return(
 
-        <div style={estilo}>holamundo</div>
+        
+        <div style={estilo} ref={elDiv}>
+            <Canva draw={draw} height={alturaCanvas } width={anchoCanvas} />
+        </div>
     )
 }
 
