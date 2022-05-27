@@ -9,6 +9,7 @@ const estilCan = {
     top:0,
     left: 0,
 
+
 }
 
 const Canva = ({draw, height, width}) => {

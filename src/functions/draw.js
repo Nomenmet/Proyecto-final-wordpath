@@ -1,16 +1,18 @@
 import * as d3 from "d3";
+import { pathCreatror } from "./pathCreator";
 
 const draw = (ctx) => {
 
     ctx.lineCap = "round";
   
     ctx.canvas.style.touchAction = "none"; // ignore native panning and zooming
-    ctx.canvas.style.border = "dotted 1px gray";
+
   
     const curve = d3.line().curve(d3.curveCatmullRom).context(ctx);
   
     let offset;
     const lastEvent = {};
+
     ctx.canvas.addEventListener(
       "pointerdown",
       ({ pointerId, clientX, clientY, pressure }) => {
@@ -32,8 +34,15 @@ const draw = (ctx) => {
     ctx.canvas.addEventListener(
       "pointerup",
       ({ pointerId }) => {
+
+        let path =  pathCreatror(lastEvent[pointerId]);
+        console.log(path);
+
         lastEvent[pointerId] = null;
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+        
+
       }
     );
   

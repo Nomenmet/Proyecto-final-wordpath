@@ -5,13 +5,33 @@ import Canva from "./components/Canva";
 import draw from "./functions/draw.js"
 
 
+function debounce(fn, ms) {
+    let timer
+    return _ => {
+      clearTimeout(timer)
+      timer = setTimeout(_ => {
+        timer = null
+        fn.apply(this, arguments)
+      }, ms)
+    };
+  }
 
 export function App(){
 
-    const elDiv = useRef();
+    
+
+    
 
     const [alturaCanvas,setAlturaCanvas] = useState(0);
     const [anchoCanvas,setAnchoCanvas] = useState(0);
+
+    const [dimensions, setDimensions] = React.useState({ 
+        height: window.innerHeight,
+        width: window.innerWidth
+    })
+
+
+    const elDiv = useRef();
 
     const estilo = {
         position:"relative",
@@ -36,13 +56,28 @@ export function App(){
     const letter = {
 
         width: anchoCanvas/10 - 2,
-        height: alturaCanvas/3,
+        height: alturaCanvas/3-2,
         backgroundColor: "yellow",
         display:"inline-block",
         border: "1px solid #000",
 
     }
 
+    useEffect(() => {
+        const debouncedHandleResize = debounce(function handleResize() {
+          setDimensions({
+            height: window.innerHeight,
+            width: window.innerWidth
+          })
+        }, 1000)
+    
+        window.addEventListener('resize', debouncedHandleResize)
+    
+        return _ => {
+          window.removeEventListener('resize', debouncedHandleResize)
+        
+    }
+      })
 
     useEffect(()=>{
         
@@ -55,7 +90,9 @@ export function App(){
 
         }
 
-    },[elDiv]);
+    },[elDiv,dimensions]);
+
+
 
     return(
 
