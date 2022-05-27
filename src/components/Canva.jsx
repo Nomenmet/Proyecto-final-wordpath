@@ -3,6 +3,13 @@ import React from "react";
 import * as d3 from "d3";
 import PropTypes from 'prop-types';
 
+const estilCan = {
+
+    position:"absolute",
+    top:0,
+    left: 0,
+
+}
 
 const Canva = ({draw, height, width}) => {
   const canvas = React.useRef();
@@ -12,7 +19,7 @@ const Canva = ({draw, height, width}) => {
   });
 
 return (
-    <canvas ref={canvas} height={height} width={width} />
+    <canvas ref={canvas} style={estilCan} height={height} width={width} />
   );
 };
 

@@ -33,6 +33,7 @@ const draw = (ctx) => {
       "pointerup",
       ({ pointerId }) => {
         lastEvent[pointerId] = null;
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       }
     );
   
