@@ -35,8 +35,15 @@ const draw = (ctx) => {
       "pointerup",
       ({ pointerId }) => {
 
-        let path =  pathCreatror(lastEvent[pointerId]);
-        console.log(path);
+        
+        let offset = ctx.canvas.getBoundingClientRect();
+
+        let bounds = {top: 0, bottom: offset.bottom - offset.top, left: 0, right: offset.right - offset.left  }
+
+        if(lastEvent[pointerId] != null){
+          let path =  pathCreatror(lastEvent[pointerId], bounds);
+          console.log(path);
+        }
 
         lastEvent[pointerId] = null;
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -47,6 +54,9 @@ const draw = (ctx) => {
     );
   
     //clear;
+
+      
+      
   
     return ctx.canvas;
   }
