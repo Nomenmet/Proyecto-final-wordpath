@@ -16,6 +16,7 @@ const Canva = ({draw, height, width}) => {
   const canvas = React.useRef();
   React.useEffect(() => {
     const context = canvas.current.getContext('2d');
+    context.canvas.element.removeEventListener("pointerdown"); 
     draw(context);
   });
 
