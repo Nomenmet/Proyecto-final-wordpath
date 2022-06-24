@@ -34,7 +34,7 @@ const draw = (ctx) => {
         
       let offset = ctx.canvas.getBoundingClientRect();
 
-      let bounds = {top: 0, bottom: offset.bottom - offset.top, left: 0, right: offset.right - offset.left  }
+      let bounds = {top: 0, bottom: offset.bottom - offset.top, left: 0, right: offset.right - offset.left, width: ctx.canvas.width, height: ctx.canvas.height }
 
       if(lastEvent[pointerId] != null){
         let path =  pathCreatror(lastEvent[pointerId], bounds);
@@ -45,11 +45,6 @@ const draw = (ctx) => {
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     }
-
-    ctx.canvas.removeEventListener("pointerdown", pointerDownF);
-    ctx.canvas.removeEventListener("pointermove", pointerMoveF);
-    ctx.canvas.removeEventListener("pointerup", pointerUpF);
-
 
 
     ctx.canvas.addEventListener(

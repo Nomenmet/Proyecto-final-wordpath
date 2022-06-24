@@ -18,7 +18,8 @@ const Canva = ({draw, height, width}) => {
     const context = canvas.current.getContext('2d');
     //&context.canvas.element.removeEventListener("pointerdown", ); 
     draw(context);
-  });
+    
+  },[]);
 
 return (
     <canvas ref={canvas} style={estilCan} height={height} width={width} />

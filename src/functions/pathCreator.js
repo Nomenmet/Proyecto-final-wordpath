@@ -3,6 +3,7 @@ export function pathCreatror(path, bounds){
 
     let curatedPath = [];
 
+    const normalCanvas = {width:1000, height:450};
 
 
     path.forEach(punto => {
@@ -14,6 +15,7 @@ export function pathCreatror(path, bounds){
         }
         
     });
+
 
     return curatedPath;
 
