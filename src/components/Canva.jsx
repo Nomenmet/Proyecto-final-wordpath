@@ -56,6 +56,8 @@ const Canva = ({draw, height, width}) => {
     
   },[]);
 
+  console.log(subCampos);
+
 return (
     <canvas ref={canvas} style={estilCan} height={height} width={width} />
   );
