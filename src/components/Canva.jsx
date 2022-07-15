@@ -17,13 +17,13 @@ const Canva = ({draw, height, width}) => {
  
   const canvas = React.useRef();
 
-  function autoFillerCampos(letras, filas, elementsNumFila, widthElement, heightElement, offsetFilaX){
+  function autoFillerCampos(letras, widthElement, heightElement, offsetFilaX){
 
     let Campos = [];
 
-    for(let v = 0; v < filas; v++){
+    for(let v = 0; v < letras.length; v++){
 
-      for(let i = 0; i < elementsNumFila[v]; i++){
+      for(let i = 0; i < letras[v].length; i++){
 
         Campos.push({
   
@@ -47,12 +47,12 @@ const Canva = ({draw, height, width}) => {
         ["A","S","D","F","G","H","J","K","L"],
             ["Z","X","C","V","B","N","M"]
     ]
-    , 3, [10, 9, 7], 1/10, 1/3, [0, 1/20, 3/20]);
+    , 1/10, 1/3, [0, 1/20, 3/20]);
 
   React.useEffect(() => {
     const context = canvas.current.getContext('2d');
     //&context.canvas.element.removeEventListener("pointerdown", ); 
-    draw(context);
+    draw(context, subCampos);
     
   },[]);
 

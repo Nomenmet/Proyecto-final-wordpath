@@ -1,7 +1,8 @@
 import * as d3 from "d3";
 import { pathCreatror } from "./pathCreator";
+import { wordingAlgoritm } from "./wordingAlgorithm";
 
-const draw = (ctx) => {
+const draw = (ctx, subCampos) => {
 
     ctx.lineCap = "round";
   
@@ -34,10 +35,11 @@ const draw = (ctx) => {
         
       let offset = ctx.canvas.getBoundingClientRect();
 
-      let bounds = {top: 0, bottom: offset.bottom - offset.top, left: 0, right: offset.right - offset.left, width: ctx.canvas.width, height: ctx.canvas.height }
+      let bounds = { top: 0, bottom: offset.bottom - offset.top, left: 0, right: offset.right - offset.left, width: ctx.canvas.width, height: ctx.canvas.height }
 
       if(lastEvent[pointerId] != null){
         let path =  pathCreatror(lastEvent[pointerId], bounds);
+        wordingAlgoritm(path, bounds, subCampos)
         console.log(path);
       }
 
