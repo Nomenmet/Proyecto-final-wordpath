@@ -1,13 +1,12 @@
 
-export function pathCreatror(path, bounds){
+export function pathCreatror(path, bounds, normalCanvas){
 
     // bounds tiene top, bottom, left, right, width y height
     let curatedPath = [];
 
-    const normalCanvas = {width:1000, height:450};
 
-    const normalizingFactorX = bounds.width/normalCanvas.width;
-    const normalizingFactorY = bounds.height/normalCanvas.height;
+    const normalizingFactorX = normalCanvas.width/bounds.width;
+    const normalizingFactorY = normalCanvas.height/bounds.height;
 
 
     path.forEach(punto => {
