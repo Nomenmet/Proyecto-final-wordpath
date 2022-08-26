@@ -11,14 +11,13 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
 
         if(ultimaLetra !== ""){
 
-            let letraActual = subFields[detectarLetra(path[i])].value
+            let letraActual = subFields[detectarLetra(path[i],normalSubFields)].value
 
 
         }else{
 
-            if()
 
-            let letraActual = detectarLetra(path[i],subFields)
+            let letraActual = detectarLetra(path[i],subFields,ultimaLetra)
 
         }
     }
