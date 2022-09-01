@@ -1,3 +1,5 @@
+
+/*
 export function detectarLetra(path, boundaries, index){
     
     if(index !== undefined){
@@ -34,4 +36,4 @@ export function detectarLetra(path, boundaries, index){
 
     return ""
 
-}
+}*/
