@@ -8,7 +8,6 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
 
     let ultimoSubcampo;
     let unparsedSlideString = "";
-    let ollkorectFlag = true;
 
     for(const point of path){
 
@@ -19,7 +18,6 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
         if((ultimoSubcampo !== undefined)?boundaryCheck(ultimoSubcampo.boundary, point):false){
 
                 // aca entra si se repite la letra
-            ollkorectFlag = false;
 
         }
             
@@ -35,7 +33,7 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
             ))
                 
             if(ultimoSubcampo !== undefined){
-                ollkorectFlag = true;
+                
                 unparsedSlideString += ultimoSubcampo.value;
             }
             
@@ -48,22 +46,12 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
 
     console.log(unparsedSlideString);
 
-    /*
-    for(let i = 0; i< path.length; i++){
-
-        if(ultimaLetra !== ""){
-
-            let letraActual = subFields[detectarLetra(path[i],normalSubFields)].value
-
-
-        }else{
-
-
-            let letraActual = detectarLetra(path[i],subFields,ultimaLetra)
-
-        }
-    }
-    */
+    // ahora tendria que hacer el string simplificado y despues de eso deberia empezar con la funcion dinamica
+    // la funcion dinamica va tener tres partes
+    // 1. el historial: cada parte va a tener un historial de todas las letras anteriores y las va a considerar verdaderas
+    // 2. la letra a considerar: cada parte va a tener una letra la cual va a comprobar si esta contenida en la palabra
+    //    para esto va a hacer una operacion con cada posible letra siguiente posible y a partir de esto llamara a otras partes
+    // 3. el diccionario: cuando una rama termina o cada cierto paso determinado se fija si el programa contiene 
 
 
 
