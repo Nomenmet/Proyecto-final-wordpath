@@ -5,19 +5,48 @@ import { detectarLetra } from "./detectarLetra.js";
 export function wordingAlgoritm(path, field, subFields, normalCanvas){
 
     const normalSubFields = fieldInterpreter(subFields,normalCanvas);
-    let ultimaLetra = "";
+
+    let ultimoSubcampo;
+    let unparsedSlideString = "";
+    let ollkorectFlag = true;
 
     for(const point of path){
 
-        console.log(
-        normalSubFields.find(((subField) =>
 
-            (subField.boundary[0] < point[0]) && (point[0] < subField.boundary[2]) && (subField.boundary[1] < point[1] ) && (point[1] < subField.boundary[3])
 
-        )).value
-        )
+
+
+        if((ultimoSubcampo !== undefined)?boundaryCheck(ultimoSubcampo.boundary, point):false){
+
+                // aca entra si se repite la letra
+            ollkorectFlag = false;
+
+        }
+            
+        else{
+
+            ultimoSubcampo = normalSubFields.find((
+
+                (subField) =>{
+    
+                    return boundaryCheck(subField.boundary , point)
+                }
+    
+            ))
+                
+            if(ultimoSubcampo !== undefined){
+                ollkorectFlag = true;
+                unparsedSlideString += ultimoSubcampo.value;
+            }
+            
+        }
+
+        
+
 
     }
+
+    console.log(unparsedSlideString);
 
     /*
     for(let i = 0; i< path.length; i++){
@@ -38,4 +67,9 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
 
 
 
+}
+
+function boundaryCheck(boundrys, point){
+
+    return (boundrys[0] < point[0]) && (point[0] < boundrys[2]) && (boundrys[1] < point[1] ) && (point[1] < boundrys[3])
 }
