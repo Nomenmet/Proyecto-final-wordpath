@@ -1,6 +1,7 @@
 
 import {fieldInterpreter} from "./fieldInterpreter.js"
 import { detectarLetra } from "./detectarLetra.js";
+import {averageCurvature} from "./averageCurvature"
 
 export function wordingAlgoritm(path, field, subFields, normalCanvas){
 
@@ -8,7 +9,9 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
 
     let ultimoSubcampo;
     let unparsedSlideString = "";
+    let arrayCampoYSubCamino = [];
 
+    //[ { value:"a", points:[ [323,233], [111,222], ... ] } ]
     for(const point of path){
 
 
@@ -18,6 +21,8 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
         if((ultimoSubcampo !== undefined)?boundaryCheck(ultimoSubcampo.boundary, point):false){
 
                 // aca entra si se repite la letra
+
+                arrayCampoYSubCamino[arrayCampoYSubCamino.length-1].points.push(point);
 
         }
             
@@ -35,6 +40,9 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
             if(ultimoSubcampo !== undefined){
                 
                 unparsedSlideString += ultimoSubcampo.value;
+
+                arrayCampoYSubCamino.push( {value:ultimoSubcampo.value, points:[point]})
+
             }
             
         }
@@ -44,7 +52,8 @@ export function wordingAlgoritm(path, field, subFields, normalCanvas){
 
     }
 
-    console.log(unparsedSlideString);
+    console.log(arrayCampoYSubCamino);
+    console.log(averageCurvature(path))
 
     // ahora tendria que hacer el string simplificado y despues de eso deberia empezar con la funcion dinamica
     // la funcion dinamica va tener tres partes
