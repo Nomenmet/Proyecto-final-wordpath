@@ -49,6 +49,15 @@ export function averageCurvature(path){
 
 // curvatura = magnitud de la derivada de T(t) / magnitud derivada path
 
+
+/* derivada -map (element, index, array){
+
+    [ array[index+1][0]-element[0], array[index+1][1]-element[1] ]
+
+
+}
+
+*/
 function derivada(path){
 
     let derivada = [];
